@@ -1,0 +1,14 @@
+{
+  "contract": "concord",
+  "status": "ready_for_manual_portal_submission",
+  "verified_on": "2026-10-09",
+  "source_sha256": "11bced4fe4d66a69890065314dff9159a856bcd77120659a0d1c78d8d73fd8c3",
+  "source_commit": "5c72b2cef3bbd8f347e826d9b1c7ea5dfad37efb",
+  "deployed": true,
+  "address": "0x40E19BFfbBd0FD45BBE30B8643C8dB9CdF96A3bA",
+  "live_consensus_tested": true,
+  "live_cases_passed": 3,
+  "local_test_groups_passed": 10,
+  "sdk_validation": "pass_without_warnings",
+  "portal_submitted": false
+}

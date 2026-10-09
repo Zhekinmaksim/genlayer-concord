@@ -1,0 +1,151 @@
+{
+  "network": "studionet",
+  "executed": true,
+  "cases": [
+    {
+      "id": "concord-compatible-001",
+      "open_args": [
+        "concord-compatible-001",
+        "A single release can have both documentation and tests."
+      ],
+      "submit_method": "submit_statements",
+      "submit_args": [
+        "concord-compatible-001",
+        [
+          "The release has documentation.",
+          "The release has tests."
+        ]
+      ],
+      "expected": {
+        "outcome": 1,
+        "conflict_pairs": [],
+        "conflict_members": []
+      },
+      "transactions": {
+        "open_case": "0xdbf4c45bb953b1b2e1cdfb810278b32a3351ce540181f62d43c9772212a0a3e2",
+        "submit_statements": "0x898d3a2fac253505113f4c85d0a7c98cc77a4a1b3d2ec94f00f32108717820f8",
+        "evaluate": "0x762c0761d55cfd9ec7d75b8881c52881ca388902c2f20ed4de7705afc9064b41"
+      },
+      "result": {
+        "conflict_members": [],
+        "conflict_pairs": [],
+        "domain_hash": "0x192bed8c234da2598a0f5165643cfdc9004a396220a1abf06b23da04a8a41fc0",
+        "outcome": 1,
+        "reason": "consistent",
+        "result_hash": "0x3c17f1fc2d39b05b5435e79746f64a61db444747a947f2cbb05dd5b451011c60",
+        "statements_hash": "0x1cda6a5cad7c0ff1e3bc9a12856930cbc1c0b393cb798ce94e42c418a35f9dbd"
+      },
+      "matches_expected": true,
+      "receipt": {
+        "transaction": "0x762c0761d55cfd9ec7d75b8881c52881ca388902c2f20ed4de7705afc9064b41",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "leader_only": false
+      }
+    },
+    {
+      "id": "concord-conflict-001",
+      "open_args": [
+        "concord-conflict-001",
+        "One build, at the same instant, has exactly one binary test status: passing or not passing."
+      ],
+      "submit_method": "submit_statements",
+      "submit_args": [
+        "concord-conflict-001",
+        [
+          "The build is passing.",
+          "The build is not passing."
+        ]
+      ],
+      "expected": {
+        "outcome": 2,
+        "conflict_pairs": [
+          "0-1"
+        ],
+        "conflict_members": [
+          0,
+          1
+        ]
+      },
+      "transactions": {
+        "open_case": "0x7be0f4866864a4c4bc8e2a2f1133e9eb6bf007620df66fec1274b0442fb1a86c",
+        "submit_statements": "0x6fdc9c25c8cdf33553b81d8724bb206a111057e6cc80790b34acac0244a21977",
+        "evaluate": "0x8a73bf1627b20182eb0705bad2ea354e6bce109aa2365be66ed7e6265b258640"
+      },
+      "result": {
+        "conflict_members": [
+          0,
+          1
+        ],
+        "conflict_pairs": [
+          "0-1"
+        ],
+        "domain_hash": "0x9716759fb02808af3ce4d4db49eea9ee4430f664a5a21d0e145a5c2d94554e95",
+        "outcome": 2,
+        "reason": "inconsistent",
+        "result_hash": "0x479f2d70ddc8018cfa0b9a86a0b3c3351cd1e3973c60d98b3a3f17b80f188228",
+        "statements_hash": "0x8bb8c0c8316791477423adf84c11c15f35a2e8958e852bcb9803312d230ef9b3"
+      },
+      "matches_expected": true,
+      "receipt": {
+        "transaction": "0x8a73bf1627b20182eb0705bad2ea354e6bce109aa2365be66ed7e6265b258640",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "leader_only": false
+      }
+    },
+    {
+      "id": "concord-cycle-001",
+      "open_args": [
+        "concord-cycle-001",
+        "A, B and C are three distinct one-time events in a strict linear temporal order. Before means strictly earlier."
+      ],
+      "submit_method": "submit_statements",
+      "submit_args": [
+        "concord-cycle-001",
+        [
+          "A occurs before B.",
+          "B occurs before C.",
+          "C occurs before A."
+        ]
+      ],
+      "expected": {
+        "outcome": 2,
+        "conflict_pairs": [],
+        "conflict_members": [
+          0,
+          1,
+          2
+        ]
+      },
+      "transactions": {
+        "open_case": "0xf83121ccc51843cda9903d86024cf315c50a2a1c351edcbdcb40f81db3b53c5e",
+        "submit_statements": "0xc7f93c6c0d4bb13b5f1053b755d970c4f9eb0c9aeecf56b82d03cda073fddff5",
+        "evaluate": "0x43366a4a583c1111e0ff8cbdde27531d0dabe2c35fb247dcf5cc8f4b507f5ed4"
+      },
+      "result": {
+        "conflict_members": [
+          0,
+          1,
+          2
+        ],
+        "conflict_pairs": [],
+        "domain_hash": "0xb5aad04606751f9def8a47b7adfb97a5de1d69c21eca2111a3aeaecf6a1b06b7",
+        "outcome": 2,
+        "reason": "inconsistent",
+        "result_hash": "0xa79190a4eefc8d61cf10ec227e7be387229255b116061f0d35f0b2b545b2b495",
+        "statements_hash": "0x9ada903ccf8e8802c437b99d253c1f499b8be5e4ac9338e12a27ea8a5b464ed7"
+      },
+      "matches_expected": true,
+      "receipt": {
+        "transaction": "0x43366a4a583c1111e0ff8cbdde27531d0dabe2c35fb247dcf5cc8f4b507f5ed4",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "leader_only": false
+      }
+    }
+  ]
+}
